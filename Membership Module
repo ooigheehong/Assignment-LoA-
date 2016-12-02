@@ -24,3 +24,6 @@ scanf("%s\n %s \n %s \n %s \n%s",@ic , @name,@contact,@email,@contact);
 printf("Please enter the ic");
 scanf("%s",@ic)
 
+1_Developer:[wan chun fatt]
+2_Time:[ideal_Time 48hours]
+3_Use_case:[https://www.pivotaltracker.com/story/show/135416949][#135416949][MembershipFunction]
