@@ -1,1 +1,26 @@
+// Create the membership record.
+char name;
+char contact;
+char email;
+char contact;
+char ic;
+
+printf("Please enter the following info");
+scanf("%s\n %s \n %s \n %s \n%s",@ic , @name,@contact,@email,@contact);
+
+//keep track the membership record
+
+printf("Please enter the ic");
+scanf("%s",@ic)
+
+//update the membership record
+
+printf("Please enter the ic");
+scanf("%s",@ic)
+printf("Please enter the following info");
+scanf("%s\n %s \n %s \n %s \n%s",@ic , @name,@contact,@email,@contact);
+
+//delete the membership record
+printf("Please enter the ic");
+scanf("%s",@ic)
 
