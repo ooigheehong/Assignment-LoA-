@@ -1,0 +1,18 @@
+//Create Staff Module
+
+string sName = "";
+string sAddress = "";
+string sDepartment = "";
+int sIC = 0;
+
+System.out.println("Enter staff name: ");
+staffName = input.nextLine();
+
+System.out.println("Enter your address code: ");
+sAddress = input.nextLine();
+
+System.out.println("Enter your department: ");
+sDepartment = input.nextLine();
+
+System.out.println("Enter IC Number: ");
+sIC = scan.nextInt
