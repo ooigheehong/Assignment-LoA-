@@ -16,3 +16,7 @@ sDepartment = input.nextLine();
 
 System.out.println("Enter IC Number: ");
 sIC = scan.nextInt;
+
+1_Developers: [Bok Chee Aun]
+2_Time: [Ideal_time 48hours]
+3_Use_case: [https://www.pivotaltracker.com/story/show/135480363][##135480363][Staff Module]
