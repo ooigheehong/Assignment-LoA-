@@ -1,0 +1,52 @@
+ String AID= artistID.getText();
+            String NAME= name.getText();
+            String ICNO= ICno.getText()+ ICno2.getText()+ ICno3.getText();
+            String HPNO= HPno.getText();
+            String EMAIL= email.getText();
+            String ADDRESS= add.getText();
+            int POSTCODE= Integer.parseInt(postcode.getText());
+            String TOWN= town.getText();
+            String STATE= state.getText();
+            String COUNTRY= country.getText();
+            
+            if(Integer.parseInt(ICno.getText())<= 999999 && Integer.parseInt(ICno2.getText())<= 99 && Integer.parseInt(ICno3.getText())<= 9999){
+                if(Integer.parseInt(ICno.getText())>100000 && Integer.parseInt(ICno2.getText())>= 1 &&  Integer.parseInt(ICno3.getText())>= 1000){
+                    aRecord.CreateRecord(AID, NAME, ICNO, HPNO, EMAIL, ADDRESS, POSTCODE, TOWN, STATE, COUNTRY );
+                    iRecord.UpdateRecord("D", (aID.getNumID()+ 1));
+
+                    cleartext();
+                    IDRecord jRecord= new IDRecord();
+                    aID= jRecord.SelectRecord("D");
+                    artistID.setText("D"+ (String.format("%03d", aID.getNumID())));
+                }else{JOptionPane.showMessageDialog(null, "Format of IC number is incorrect", "", JOptionPane.WARNING_MESSAGE);}
+            }else{
+                JOptionPane.showMessageDialog(null, "IC number is out of range", "", JOptionPane.WARNING_MESSAGE);
+            }
+             aID= artistID.getText();
+            
+            Artist artist= aRecord.SelectRecord(aID);
+            if(artist != null){
+                
+                String front= String.format("%06d", Long.parseLong(artist.getICno())/ 1000000);
+                String middle= String.format("%02d", (Long.parseLong(artist.getICno())/10000)%100);
+                String back= String.format("%04d", Long.parseLong(artist.getICno())%10000);
+
+                name.setText(artist.getName());
+                ICno.setText(front);
+                ICno2.setText(middle);
+                ICno3.setText(back);
+                HPno.setText(""+ artist.getHP());
+                email.setText(artist.getEmail());
+                add.setText(artist.getAdd().getAddress());
+                postcode.setText(""+ artist.getAdd().getPostcode());
+                town.setText(artist.getAdd().getTown());
+                state.setText(artist.getAdd().getState());
+                country.setText(artist.getAdd().getCountry());
+            }else{
+                JOptionPane.showMessageDialog(null, "Unable to Retrieve", "Retrieve Record", JOptionPane.WARNING_MESSAGE);
+            }
+            if(name.getText().equals("")){
+                edit.setEnabled(false);
+            }else{
+                edit.setEnabled(true);
+            }
