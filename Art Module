@@ -1,0 +1,74 @@
+public Artist getRecord(String ID){
+        String queryStr = "SELECT * FROM ARTIST WHERE ARTISTID = ?";
+        Artist artist= null;
+        Address add= null;
+        try{
+            stmt = conn.prepareStatement(queryStr);
+            stmt.setString(1, ID);
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                add= new Address(rs.getString("ADDRESS"), rs.getInt("POSTCODE"), rs.getString("TOWN"), rs.getString("STATE"), rs.getString("COUNTRY"));
+                artist= new Artist(ID, rs.getString("NAME"), rs.getString("ICNO"), rs.getString("HPNO"), rs.getString("EMAIL"), add);
+            }
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        return artist;
+    }
+    
+    public void updateRecord(String ID, String HPno, String email, String address, int postcode, String town, String state, String country){
+        String queryStr = "UPDATE "+ tableName+ " SET HPNO= ?, EMAIL= ?, ADDRESS= ?, POSTCODE= ?, TOWN= ?, STATE= ?, COUNTRY= ? WHERE ARTISTID = ?";
+                
+        try{
+            stmt = conn.prepareStatement(queryStr);
+            stmt.setString(1, HPno);
+            stmt.setString(2, email);
+            stmt.setString(3, address);
+            stmt.setInt(4, postcode);
+            stmt.setString(5, town);
+            stmt.setString(6, state);
+            stmt.setString(7, country);
+            stmt.setString(8, ID);
+
+            
+            stmt.executeUpdate();
+        }catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void deleteRecord(String ID){
+        String queryStr = "DELETE FROM "+ tableName+ " WHERE ARTISTID = ?";
+        
+        try {
+            stmt = conn.prepareStatement(queryStr);
+            stmt.setString(1, ID);
+            
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void createRecord(String ID, String name, String ICno, String HPno, String email, String address, int postcode, String town, String state, String country){
+        String queryStr = "INSERT INTO "+ tableName+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+            stmt = conn.prepareStatement(queryStr);
+            stmt.setString(1, ID);
+            stmt.setString(2, name);
+            stmt.setString(3, ICno);
+            stmt.setString(4, HPno);
+            stmt.setString(5, email);
+            stmt.setString(6, address);
+            stmt.setInt(7, postcode);
+            stmt.setString(8, town);
+            stmt.setString(9, state);
+            stmt.setString(10, country);
+            
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
