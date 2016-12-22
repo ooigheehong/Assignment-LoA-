@@ -1,0 +1,41 @@
+try {
+                    tableModel = new ResultSetTableModel(DATABASE_URL, USERNAME, PASSWORD, QUERY);
+                    resultTable = new JTable(tableModel);     
+                        resultTable.setFont(afont);
+                        resultTable.getTableHeader().setFont(afont);
+                        resultTable.setRowHeight(31);
+
+                    scrollPane= new JScrollPane(resultTable);
+
+                    sorter = new TableRowSorter<TableModel>(tableModel);
+                    resultTable.setRowSorter(sorter);
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+                    tableModel.disconnectFromDatabase();
+                    System.exit(1);
+                }
+                try{
+                if(ans== true){
+                    Art art= new Art();
+                    Product product= new Product();
+                    art= artRecord.SelectRecord(artID.getText());
+                    product= productRecord.SelectRecord(art.getProductID());
+                    if(art != null){
+                        ARTID= art.getArtID();
+                        artName.setText(product.getName());
+                        save2.setEnabled(true);
+                        delete2.setEnabled(true);
+                    }
+                    else{
+                        artName.setText("");
+                        save2.setEnabled(false);
+                        delete2.setEnabled(false);
+                    }
+                }
+            }
+            catch(Exception ex){
+                artName.setText("");
+                save2.setEnabled(false);
+                delete2.setEnabled(false);
+            }
