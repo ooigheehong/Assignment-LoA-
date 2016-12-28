@@ -1,3 +1,28 @@
 //Ticketing Module
 
+  private String host = "jdbc:derby://localhost:1527/FinalYearProject";
+    private String user = "fyp";
+    private String password = "fyp";
+    private Connection conn;
+    private PreparedStatement stmt;
+    private String tableName= "TICKET";
 
+  public void createRecord(String TicketID, String date, int discount, String ScheduleID){
+        String queryStr = "INSERT INTO "+ tableName+ " VALUES(?, ?, ?, ?)";
+       
+        try {
+            stmt = conn.prepareStatement(queryStr);
+            stmt.setString(1, TicketID);
+            stmt.setString(2, date);
+            stmt.setInt(3, discount);
+            stmt.setString(4, ScheduleID);
+            
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        } 
+    }
+    
+ +1_Developers: [Bok Chee Aun]
+ +2_Time: [Ideal_time 24hours]
+ +3_Use_case: [https://www.pivotaltracker.com/n/projects/1923045][##1923045][Ticketing Module]
