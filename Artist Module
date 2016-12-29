@@ -50,3 +50,6 @@
             }else{
                 edit.setEnabled(true);
             }
++1_Developers: [Ooi Ghee Hong]
++2_Time: [Ideal_time 48hours]
++3_Use_case: [https://www.pivotaltracker.com/story/show/135703801][#135703801][Artist Module]
