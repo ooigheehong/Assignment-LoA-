@@ -72,3 +72,7 @@ public Artist getRecord(String ID){
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+1_Developers: [Ooi Ghee Hong]
+2_Time: [Ideal_time 48hours]
+3_Use_case: [https://www.pivotaltracker.com/story/show/136314155][#136314155][Art Module]
